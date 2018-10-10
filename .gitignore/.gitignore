@@ -1,0 +1,124 @@
+# Exercice 1: PGCD
+Écrivez un programme en langage C qui prend en entrée deux entiers et puis affiche
+un PGCD de ces deux entiers.
+
+...c
+#include <stdio.h>
+
+int i; parameter_a, parameter_b , pgcd = 1 ;
+int bool= 1;
+ 
+ // i is the variable compteur 
+ // a and b are the parameters
+
+
+do
+{
+  if ( parameter_a % i == 0 && parameter_b % i == 0 )
+  {
+      pgcd = i;
+  }   
+  i += 1  
+ } while (i > parameter_a || i > parameter_b);
+
+printf("The PGCD is : %i",pgcd)
+
+...
+
+
+
+# Exercice 2: Suite des nombres impaires
+Écrire un programme en langage C qui fait la somme d’une suite d’un nombre entier
+impaire ≤ n.
+Exemple:
+n = 7
+1 + 3 + 5 + 7 = 15
+n = 6
+1 + 3 + 5 = 9
+
+// ici, je pars du principe que n est stictement plus grand que 0
+
+...c
+integer i, parameter_n , variable_a= 1, result= 0;
+
+while (variable_a <= parameter_n)
+{
+  result += variable_a
+  variable += 2
+}
+
+...
+
+
+
+# Exercice 4 : Longueur d’une chaîne
+Écrivez un programme qui lit en entrée une chaîne de caractère et puis fait appel à
+une fonction qui détermine sa longueur sachant qu’une chaîne de caractère se termine
+par un symbol ’\0’
+
+// Pas encore fini, pas créé la chaine de caractère et pas initialisé le tableau
+
+...c
+
+int i= 0, variable_a;
+float array_a [];
+
+while ( array_a[i] != '\0')
+{
+  i += 1
+}
+printf("The array countains : %i caracteres",i)
+
+...
+
+
+# Exercice 5: Palindrome
+Écrivez un programme qui lit en entrée une chaîne de caractère et puis fait appel à
+une fonction qui détermine si une chaîne est palindrome. Un palindrome est un chaîne
+qui se lit dans les deux sens.
+
+...c
+
+
+...
+
+
+
+
+# Exercice 6 :  Passer des arguments
+Réécrivez le programme de l’exercice 5 mais cette fois il accepte une chaîne passée
+en argument.
+Exemple
+> ./palindrome aaabbaaa
+La chaine aaabbaaa est un palindrome.
+...c
+
+
+...
+
+
+# Exercice 7 : Makefile
+En prenant l’exercice 5, créez un fichier en tête chaine.h. Ce fichier contient les
+prototypages des fonctions suivantes :
+— la fonction longueur qui prend en entrée une chaîne et retourne la longueur de
+cette chaîne.
+— la fonction estPalindrome qui prend en entrée une chaîne et retourne 1 si la
+chaîne est un palindrome sinon 0.
+Puis créez une autre fichier source chaine.c qui implémente ces deux fonctions indiquées
+en haut. N’oubliez pas d’écrire une fonction main qui teste si une chaîne est un
+palindrome.
+2
+Enfin écrivez un fichier Makefile qui permet de compiler ces différents fichiers
+
+...c
+
+
+...
+
+
+# Exercice 8: Ecrivez Makefile pour chaque exercice
+
+
+
+
+

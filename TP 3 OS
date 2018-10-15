@@ -1,7 +1,11 @@
 
 # TP 3 OS
 
+#Exercice 1
+
 Étant donnée le listing du programme suivant :
+
+...c
 #i n cl u d e <s t d i o . h>
 #i n cl u d e <c t ype . h>
 #i n cl u d e < s t d l i b . h>
@@ -18,4 +22,9 @@ i n t g e t i n t ( i n t ∗pn )
 i n t c , si g n ;
 w hil e ( i s s p a c e ( c = g e t c h a r ( ) ) )
 ;
+
+...
+
+
+
 

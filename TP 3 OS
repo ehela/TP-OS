@@ -9,12 +9,12 @@
 #include < ctype.h >
 #include < stdlib.h >
 #define SIZE 5
-int getint ( int ∗ ) ;
+int getint ( int ∗ ) ;  // On déclare getint()
 int main ( ) {
   int n , array [ SIZE ] ;
   for ( n = 0 ; n < SIZE && getint (& array [ n ] ) != EOF; n++) ;
-  return 0 ;
-}
+    return 0 ;
+ }
 
 int getint ( int ∗pn ){
   int c , sign ;
@@ -22,16 +22,16 @@ int getint ( int ∗pn ){
     if ( ! isdigit ( c ) && c != EOF && c != ’+ ’ && c != ’ − ’) {
       ungetc ( c , stdin ) ;
       return 0 ;
-  }
-  sign = ( c == ’ − ’) ? −1 : 1 ;
-  if ( c == ’+ ’ | | c == ’ − ’)
-  c = getchar ( ) ;
-  for (∗pn = 0 ; isdigit ( c ) ; c = getchar ( ) )
-  ∗pn = 10 ∗ ∗pn + ( c − ’ 0 ’ ) ;
-  ∗pn ∗= si g n ;
-  if ( c != EOF)
-  ungetc ( c , stdin ) ;
-  returnc ;
+     }
+    sign = ( c == ’ − ’) ? −1 : 1 ;
+    if ( c == ’+ ’ | | c == ’ − ’)
+    c = getchar ( ) ;
+    for (∗pn = 0 ; isdigit ( c ) ; c = getchar ( ) )
+    ∗pn = 10 ∗ ∗pn + ( c − ’ 0 ’ ) ;
+    ∗pn ∗= si g n ;
+    if ( c != EOF)
+      ungetc ( c , stdin ) ;
+      return c ;
 }
 ...
 
@@ -44,11 +44,18 @@ du tableau.
 ##Réponse Ex 1:
 Termes et fonctions:
 GDB: GNU debugger
+EOf: End-Of-File
 
-int getint(void) : The C library function int getchar(void) gets a character (an unsigned char) from stdin. This is equivalent to getc with stdin as its argument.
+int getchar(void) : The C library function int getchar(void) gets a character (an unsigned char) from stdin. This is equivalent to getc with stdin as its argument.
 isspace (int): vérifie si le caractère est un espace 
 
+
 Tout d'abord, on déclare une première fonction "getint"
+getint()
+
+Ensuite on lance la fonction main qui lance le programme:
+  On définit un tableau ayant une taille limitée, puis on initialise une boucle for ayant "n" comme variable compteur
+  
 
 
 

@@ -4,27 +4,104 @@
 #Exercice 1
 
 Étant donnée le listing du programme suivant :
+...c
+#include < stdio.h >
+#include < ctype.h >
+#include < stdlib.h >
+#define SIZE 5
+int getint ( int ∗ ) ;
+int main ( ) {
+  int n , array [ SIZE ] ;
+  for ( n = 0 ; n < SIZE && getint (& array [ n ] ) != EOF; n++) ;
+  return 0 ;
+}
+
+int getint ( int ∗pn ){
+  int c , sign ;
+  while ( isspace ( c = getchar ( ) ));
+    if ( ! isdigit ( c ) && c != EOF && c != ’+ ’ && c != ’ − ’) {
+      ungetc ( c , stdin ) ;
+      return 0 ;
+  }
+  sign = ( c == ’ − ’) ? −1 : 1 ;
+  if ( c == ’+ ’ | | c == ’ − ’)
+  c = getchar ( ) ;
+  for (∗pn = 0 ; isdigit ( c ) ; c = getchar ( ) )
+  ∗pn = 10 ∗ ∗pn + ( c − ’ 0 ’ ) ;
+  ∗pn ∗= si g n ;
+  if ( c != EOF)
+  ungetc ( c , stdin ) ;
+  returnc ;
+}
+...
+
+Répondez aux questions suivantes :
+1. Que fait ce programme ?
+2. En utilisant le gdb, mettez en évidence le passage par référence de chaque élément
+du tableau.
+3. Essayez de comprendre les rapports de la commande strace
+
+##Réponse Ex 1:
+Termes et fonctions:
+GDB: GNU debugger
+
+int getint(void) : The C library function int getchar(void) gets a character (an unsigned char) from stdin. This is equivalent to getc with stdin as its argument.
+isspace (int): vérifie si le caractère est un espace 
+
+Tout d'abord, on déclare une première fonction "getint"
+
+
+
+#Exercice 2
+
+On veut créer un programme de dictionnaire qui permet de stocker des mots et ainsi
+que leurs définitions. Il est à noter que le programme devra utiliser une liste chaînée afin
+qu’on peut stocker invariablement plusieurs mots. De ce fait, vous devez implémenter au
+moins ces fonctions suivantes :
+— déclarer une structure de données d’un élément de dictionnaires.
+— écrire une fonction permettant de tester si un dictionnaire est vide. La fonctionne
+retourne un nombre positif si le dictionnaire est vide sinon zéro dans le
+cas contraire.
+— écrire une fonction permettant d’ajouter un mot à la tête de liste.
+— écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
+— écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
+— écrire une fonction permettant de supprimer un mot à la tête de liste.
+— écrire une fonction permettant de supprimer un mot à la queue de liste.
+— écrire une fonction permettant de supprimer un mot en donnant son indice.
+— écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.
+— écrire une fonction permettant de rechercher un mot.
+— écrire une fonction pour copier un dictionnaire. La fonction retourne un nouveau
+dictionnaire.
+— écrire une fonction affichant tous les mots entrés par page de 10.
+— écrire une fonction affichant un menu pour faire appels à des fonctions
+— écrire une fonction permettant de trier le dictionnaire par order croissant et décroissant.
+en haut.
+— écrire un makefile qui permet de compiler ce programme.
+Lorsque le programme se termine, vous devez prendre soin de libérer toutes les zones
+de mémoires utilisés, si votre programme n’effectue pas proprement ce nettoyage, cela
+entraîne un point de moins sur la note attribuée à cet exercice.
 
 ...c
-#i n cl u d e <s t d i o . h>
-#i n cl u d e <c t ype . h>
-#i n cl u d e < s t d l i b . h>
-#d e f i n e SIZE 5
-i n t g e t i n t ( i n t ∗ ) ;
-i n t main ( ) {
-i n t n , a r r a y [ SIZE ] ;
-f o r ( n = 0 ; n < SIZE && g e t i n t (& a r r a y [ n ] ) != EOF; n++)
-;
-r e t u r n 0 ;
-}
-i n t g e t i n t ( i n t ∗pn )
-{
-i n t c , si g n ;
-w hil e ( i s s p a c e ( c = g e t c h a r ( ) ) )
-;
+
 
 ...
 
 
+# Exercice 3
 
+En reprenant l’énoncé de l’exercice 2, refaire toutes les fonctions en utilisant une
+liste doublement chaînée. Une list doublement chaînée est une liste dont chaque élément
+maintient deux pointeurs qui pointent respectivement sur un élément précédent et un
+élément suivant.
+
+...c
+
+...
+
+
+# Exercice 4
+
+...c
+
+...
 

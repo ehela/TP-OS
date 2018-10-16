@@ -16,22 +16,23 @@ int main ( ) {
     return 0 ;
  }
 
-int getint ( int ∗pn ){
+int getint ( int ∗pn )
+{
   int c , sign ;
   while ( isspace ( c = getchar ( ) ));
-    if ( ! isdigit ( c ) && c != EOF && c != ’+ ’ && c != ’ − ’) {
-      ungetc ( c , stdin ) ;
-      return 0 ;
-     }
-    sign = ( c == ’ − ’) ? −1 : 1 ;
-    if ( c == ’+ ’ | | c == ’ − ’)
+  if ( ! isdigit ( c ) && c != EOF && c != ’+ ’ && c != ’ − ’) {
+    ungetc ( c , stdin ) ;
+    return 0 ;
+  }
+  sign = ( c == ’ − ’) ? −1 : 1 ;
+  if ( c == ’+ ’ | | c == ’ − ’)
     c = getchar ( ) ;
-    for (∗pn = 0 ; isdigit ( c ) ; c = getchar ( ) )
-    ∗pn = 10 ∗ ∗pn + ( c − ’ 0 ’ ) ;
+  for (∗pn = 0 ; isdigit ( c ) ; c = getchar ( ) )
+    *pn = 10 ∗ ∗pn + ( c − ’ 0 ’ ) ;
     ∗pn ∗= si g n ;
-    if ( c != EOF)
-      ungetc ( c , stdin ) ;
-      return c ;
+  if ( c != EOF)
+    ungetc ( c , stdin ) ;
+  return c ;
 }
 ...
 
@@ -46,15 +47,20 @@ Termes et fonctions:
 GDB: GNU debugger
 EOf: End-Of-File
 
-int getchar(void) : The C library function int getchar(void) gets a character (an unsigned char) from stdin. This is equivalent to getc with stdin as its argument.
+int getchar(void) : The C library function int getchar(void) gets a character (an unsigned char) from stdin.
+  This is equivalent to getc with stdin as its argument.
 isspace (int): vérifie si le caractère est un espace 
+int unget(int char, FILE *stream):The C library function int ungetc(int char, FILE *stream) pushes the character 
+  char (an unsigned char) onto the specified stream so that the this is available for the next read operation.
 
 
 Tout d'abord, on déclare une première fonction "getint"
-getint()
+getint():
+  c= un char qu'on introduit
 
 Ensuite on lance la fonction main qui lance le programme:
   On définit un tableau ayant une taille limitée, puis on initialise une boucle for ayant "n" comme variable compteur
+  
   
 
 

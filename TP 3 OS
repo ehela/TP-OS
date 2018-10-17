@@ -54,11 +54,14 @@ int isdigit (int c): The C library function void isdigit(int c) checks if the pa
 
 stdin :Standard input stream. The standard input stream is the default source of data for applications. In most systems, it is usually directed by default to the keyboard. stdin can be used as an argument for any function that expects an input stream (FILE*) as one of its parameters, like fgets or fscanf.
 
-Tout d'abord, on déclare une première fonction "getint"
+
+Tout d'abord, une première fonction "getint()" est déclarée
 getint()
-    On demande à l'utilisateur de rentrer un truc (jcp peut etre un int, char ,...) et tant que c'est un espace, on nous demande de rerentrer un  qui va dans la variable c
-    IF: Ensuite, on regarde si ce n'est pas un nombre, la fin d'un fichier uncaractère "+" ou bien un caractère "-". Si ces conditions sont respectées, alors on fait ungetc (c, stdin) qui pousse c dans le truc que stdin a entré.
-    SINON: on met la variable "sign" à -1 si la variable c est un "-"
+    On rentre dans une boucle WHILE qui demande à l'utilisateur de rentrer un caractère qui n'est pas un espace. Tant que l'utilisateur rentre un espace, alors, la boucle ne s'arrete pas.
+    IF: Ensuite, on regarde si le caractère n'est pas un nombre ET que ce n'est pas la fin d'un fichier ET qu'il est différent du caractère "+" ET du caractère "-". 
+    	Si ces conditions sont respectées, alors on fait ungetc (c, stdin) qui pousse c dans le truc que stdin a entré.
+		
+    SINON: on met la variable "sign" à -1 si la variable c est un "-", ou bien la valeur 1
     IF: la variable c est "+" ou "-", alors on doit rentrer un autre caractère pour la variable c: c = getchar()
     FOR: 
         initialiser pointeur *pn 
@@ -68,6 +71,10 @@ getint()
 Ensuite on lance la fonction main qui lance le programme:
   On définit un tableau ayant une taille limitée, puis on initialise une boucle for ayant "n" comme variable compteur
 
+
+#remarque ligne 60: Je ne suis pas sure que ce soit obligatoirement un simple caractère, il faudrait voir si ça pourrait être une "string"
+#remarque ligne 61: en fait je pense plus que le caractère doit être différent du "NULL" ou bien de "\0"
+#remarque ligne 62 : Est-ce que "stdin" signifie qu'on peut rentrer un autre caractère(/chaine de caractère) ou bien ?
 
 2. En utilisant le gdb, mettez en évidence le passage par référence de chaque élément
 du tableau.

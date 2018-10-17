@@ -60,12 +60,17 @@ getint()
     On rentre dans une boucle WHILE qui demande à l'utilisateur de rentrer un caractère qui n'est pas un espace. Tant que l'utilisateur rentre un espace, alors, la boucle ne s'arrete pas.
     IF: Ensuite, on regarde si le caractère n'est pas un nombre ET que ce n'est pas la fin d'un fichier ET qu'il est différent du caractère "+" ET du caractère "-". 
     	Si ces conditions sont respectées, alors on fait ungetc (c, stdin) qui pousse c dans le truc que stdin a entré.
+	ET on return 0;
 		
     SINON: on met la variable "sign" à -1 si la variable c est un "-", ou bien la valeur 1
     IF: la variable c est "+" ou "-", alors on doit rentrer un autre caractère pour la variable c: c = getchar()
     FOR: 
-        initialiser pointeur *pn 
+        initialiser pointeur *pn --> jusqu'a ce que le nombre entré soit un "digit"/nombre (= CONDITION DE SORTIE)
+	Dans la boucle, *pn = 10 * *pn + (c - '0') et ensuite, on multiplie *pn par sign ( qui vaut soit 1, soit -1)
+	
     IF: si la variable c n'est pas la fin du fichier, alors on fait unget(c- '0')
+    
+    ON RETURN 0 à la fin
     
 
 Ensuite on lance la fonction main qui lance le programme:

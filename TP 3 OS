@@ -11,12 +11,14 @@
 #define SIZE 5
 int getint ( int ∗ ) ;  // On déclare getint()
 int main ( ) {
-  int n , array [ SIZE ] ;
+  int n , array [ SIZE ] ; // definition de variable
+  // n augmente jusque 4 sauf si il a atteint la fin du fichier
+  
   for ( n = 0 ; n < SIZE && getint (& array [ n ] ) != EOF; n++) ;
     return 0 ;
  }
 
-int getint ( int ∗pn )
+int getint ( int ∗pn ) // pn est un pointeur
 {
   int c , sign ;
   while ( isspace ( c = getchar ( ) ));
@@ -37,21 +39,45 @@ int getint ( int ∗pn )
 ...
 
 Répondez aux questions suivantes :
-1. Que fait ce programme ?
-2. En utilisant le gdb, mettez en évidence le passage par référence de chaque élément
-du tableau.
-3. Essayez de comprendre les rapports de la commande strace
+###1. Que fait ce programme ?
 
-##Réponse Ex 1:
-Termes et fonctions:
 GDB: GNU debugger
 EOf: End-Of-File
 
-int getchar(void) : The C library function int getchar(void) gets a character (an unsigned char) from stdin.
-  This is equivalent to getc with stdin as its argument.
+int getchar(void) : The C library function int getchar(void) gets a character (an unsigned char) from stdin. This is equivalent to getc with stdin as its argument.
+
 isspace (int): vérifie si le caractère est un espace 
-int unget(int char, FILE *stream):The C library function int ungetc(int char, FILE *stream) pushes the character 
-  char (an unsigned char) onto the specified stream so that the this is available for the next read operation.
+
+ungetc(int char, FILE *stream): The C library function int ungetc(int char, FILE *stream) pushes the character char (an unsigned char) onto the specified stream so that the this is available for the next read operation.
+
+int isdigit (int c): The C library function void isdigit(int c) checks if the passed character is a decimal digit character. Decimal digits are (numbers) − 0 1 2 3 4 5 6 7 8 9.
+
+stdin :Standard input stream. The standard input stream is the default source of data for applications. In most systems, it is usually directed by default to the keyboard. stdin can be used as an argument for any function that expects an input stream (FILE*) as one of its parameters, like fgets or fscanf.
+
+Tout d'abord, on déclare une première fonction "getint"
+getint()
+    On demande à l'utilisateur de rentrer un truc (jcp peut etre un int, char ,...) et tant que c'est un espace, on nous demande de rerentrer un  qui va dans la variable c
+    IF: Ensuite, on regarde si ce n'est pas un nombre, la fin d'un fichier uncaractère "+" ou bien un caractère "-". Si ces conditions sont respectées, alors on fait ungetc (c, stdin) qui pousse c dans le truc que stdin a entré.
+    SINON: on met la variable "sign" à -1 si la variable c est un "-"
+    IF: la variable c est "+" ou "-", alors on doit rentrer un autre caractère pour la variable c: c = getchar()
+    FOR: 
+        initialiser pointeur *pn 
+    IF: si la variable c n'est pas la fin du fichier, alors on fait unget(c- '0')
+    
+
+Ensuite on lance la fonction main qui lance le programme:
+  On définit un tableau ayant une taille limitée, puis on initialise une boucle for ayant "n" comme variable compteur
+
+
+2. En utilisant le gdb, mettez en évidence le passage par référence de chaque élément
+du tableau.
+
+
+
+
+
+3. Essayez de comprendre les rapports de la commande strace
+
 
 
 Tout d'abord, on déclare une première fonction "getint"

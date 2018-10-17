@@ -80,15 +80,6 @@ du tableau.
 
 
 
-Tout d'abord, on déclare une première fonction "getint"
-getint():
-  c= un char qu'on introduit
-
-Ensuite on lance la fonction main qui lance le programme:
-  On définit un tableau ayant une taille limitée, puis on initialise une boucle for ayant "n" comme variable compteur
-  
-  
-
 
 
 #Exercice 2
@@ -123,7 +114,33 @@ entraîne un point de moins sur la note attribuée à cet exercice.
 ...c
 
 
+ce que le prof a mis au tableau: :o
+
+struct block {
+    char data[255];
+    struct block *next;
+}
+
+struct word {
+    char key[25];
+    struct block *definition
+    struct word *next
+}
+
+str. block *ptr;
+ptr = (st??? bl??? ?) malloc(sizeof());
+(*ptr).a = 3;
+(*ptr)data ="boujour"
+    strcpy (dest, source)
+    strnpy( , ,j)
+    dest[5] = '/0'
+
+
+
 ...
+
+
+
 
 
 # Exercice 3
@@ -138,9 +155,470 @@ maintient deux pointeurs qui pointent respectivement sur un élément précéden
 ...
 
 
-# Exercice 4
 
-...c
 
-...
+
+__________________________
+
+
+
+# Liste chainée
+
+
+
+On veut créer un programme de dictionnaire qui permet de stocker des mots et ainsi que leurs définitions. Il est à noter que le programme devra utiliser une liste chaînée afin qu’on peut stocker invariablement plusieurs mots. De ce fait, vous devez implémenter au moins ces fonctions suivantes : 
+
+Listes chainées
+---------------
+-> semblables aux tableaux
+
+/!\ l'accès se fait par pointeur et non par index(=char[] je suppose)
+le pointeur suivant du dernier élément pointe vers NULL
+
+
+Pour accéder à un élément:
+--------------------------
+1) parcourir la tête
+2) le 2e pointeur sert à se déplacer vers le prochain élément
+
+/!\ le déplacement se fait dans une seule direction
+
+Pour se déplacer dans les 2 directions --> listes doublement chainées
+
+Pour définir un élément de la liste:
+------------------------------------
+* on utilise struct
+
+Sauvegarde d'élément:
+---------------------
+* pour avoir le controle de la liste
+* le premier élément, le dernier et le nombre d'éléments
+* avec des variables ou des structures
+
+```c
+typedef struct ListeRepere {
+	Element *debut; // adresse du premier élément de la liste
+	Element *fin; // adresse du dernier élément de la  liste
+	int taille; // nombre d'éléments
+} Liste;
+```
+
+/!\ peu importe la position dans la liste pointeurs début et fin pointent toujours vers le 1er et dernier élément.
+/!\ taille reste aussi inchangé
+
+Insertion et suppression sur les listes chainées
+------------------------------------------------
+Avant toute opération, il faut initialiser. Le pointeur début et fin sont initialisés avec le pointeur NULL et la taille avec 0.
+
+```c
+void initialisation (Liste *liste) {
+	liste ->debut = NULL;
+	liste -> fin = NULL;
+	taille = 0;
+}
+```
+
+ajouter un élément dans la liste
+--------------------------------
+* déclarer les éléments à insérer
+* allocation de mémoire
+* remplir le contenu du champs de données
+* maj des pointeurs vers élément 1 et dernier (slmt si nécessaire)
+* la taille de la liste est maj !
+
+insérer dans une liste vide
+---------------------------
+* (déclarer élément à insérer)
+* allocation de mémoire
+* remplir le champs de données avec les nouveaux éléments
+* le pointeur après l'élément ajouter pointera vers NULL
+* pointeur debut et fin pointent vers l'élément ajouté (puisque 1 seul élément)
+* taille maj
+
+```c
+int ins_dans_liste_vide (Liste * liste, char *donnee){ 
+
+	Element *nouveau_element; // déclarer élément à insérer
+
+	// allocation de mémoire
+	if ((nouveau_element = (Element *) malloc (sizeof (Element))) == NULL) 
+		return -1; // échec
+	if ((nouveau_element->donnee = (char *) malloc (50 * sizeof (char))) 
+      == NULL) 
+		return -1; // échec
+	
+	// champs des données avec nouveau élément
+  	strcpy (nouveau_element->donnee, donnee); 
+
+	// pointeur après l'élément ajouté vers NULL
+	nouveau_element->suivant = NULL; 
+
+	// debut et fin pointent vers nouvel élément
+	liste->debut = nouveau_element; 
+	liste->fin = nouveau_element; 
+
+	// maj taille
+  	liste->taille++; 
+
+  	return 0; // réussite
+} 
+```
+
+insertion en début de liste 
+---------------------------
+* allocation de la mémoire pour le nouvel élément
+* remplir le champ de données du nouvel élément
+* le pointeur suivant du nouvel élément pointe vers le 1er élément
+* le pointeur debut pointe vers le nouvel élément
+* le pointeur fin ne change pas
+* la taille est incrémentée
+
+```c
+int ins_debut_liste (Liste * liste, char *donnee){ 
+
+	// déclarer nouveau élément à insérer
+	Element *nouveau_element; 
+
+	// allocation de mémoire
+	if ((nouveau_element = (Element *) malloc (sizeof (Element))) == NULL) 
+		return -1; //echec
+	if ((nouveau_element->donnee = (char *) malloc (50 * sizeof (char))) == NULL) 
+		return -1; //echec
+
+	// remmplir champs de données
+	strcpy (nouveau_element->donnee, donnee); 
+	
+	// pointeur suivant du nouvel élément pointe vers le premier élément
+	nouveau_element->suivant = liste->debut;
+
+	// pointeur debut pointe vers le nouvel élément 
+	liste->debut = nouveau_element; 
+
+	// maj taille
+	liste->taille++; 
+
+	return 0; // réussite
+}
+```
+
+insérer élément en fin de liste
+-------------------------------
+* allocation de la mémoire pour le nouvel élément
+* remplir le champ de données du nouvel élément
+* le pointeur suivant du dernier élément pointe vers le nouvel élément
+* le pointeur fin pointe vers le nouvel élément
+* le pointeur debut ne change pas
+* la taille est incrémentée
+
+insérer ailleurs dans la liste
+------------------------------
+* allocation de la mémoire pour le nouvel élément
+* remplir le champ de données du nouvel élément
+* choisir une position dans la liste (l'insertion se fera après la position choisie)
+* le pointeur suivant du nouvel élément pointe vers l'adresse sur laquelle pointe le pointeur suivant d'élément courant. (cette explication est un peu tordue, mais l'image vous éclaira ;-)
+* le pointeur suivant du l'élément courant pointe vers le nouvel élément
+* les pointeurs debut et fin ne change pas
+* la taille est incrémentée d'une unité
+
+```c
+int ins_liste (Liste * liste, char *donnee, int pos){ // pos = position dans la liste
+	if (liste->taille < 2) 
+		return -1; // echec
+	if (pos < 1 || pos >= liste->taille) 
+		return -1; // echec
+
+	Element *courant; 
+	Element *nouveau_element; 
+	int i; 
+
+	// allocation de mémoire
+	if ((nouveau_element = (Element *) malloc (sizeof (Element))) == NULL) 
+		return -1; // échec
+	if ((nouveau_element->donnee = (char *) malloc (50 * sizeof (char))) == NULL) 
+		return -1; // échec
+
+	// ajout dans le champs des données
+	courant = liste->debut; 
+	for (i = 1; i < pos; ++i) 
+		courant = courant->suivant; 
+	if (courant->suivant == NULL) 
+		return -1; 
+	strcpy (nouveau_element->donnee, donnee); 
+
+	// le pointeur suivant du nouvel élément pointe vers l'adresse sur laquelle pointe le pointeur suivant d'élément courant. 
+	nouveau_element->suivant = courant->suivant; 
+
+	// le pointeur suivant du l'élément courant pointe vers le nouvel élément
+	courant->suivant = nouveau_element; 
+
+	// maj de la taille
+	liste->taille++; 
+
+	return 0; // réussite
+} 
+```
+
+
+Suppression d'un élément dans la liste
+--------------------------------------
+* utilisation d'un pointeur temporaire pour sauvegarder l'adresse d'éléments à supprimer
+* l'élément à supprimer se trouve après l'élément courant
+* Faire pointer le pointeur suivant de l'élément courant vers l'adresse du pointeur suivant de l'élément à supprimer
+* libérer la mémoire occupée par l'élément supprimé
+* mettre à jour la taille de la liste
+
+Pour supprimer un élément dans la liste il y a plusieurs situations :
+1. Suppression au début de la liste
+2. Suppression ailleurs dans la liste
+
+voir plus d'infos sur: https://www.commentcamarche.com/faq/7444-liste-simplement-chainee#operations-sur-les-listes-chainees
+
+Affichage de la liste
+---------------------
+* Il faut se positionner au début de la liste (le pointeur debut le permettra). 
+* Ensuite en utilisant le pointeur suivant de chaque élément la liste est parcourue du 1er vers le dernier élément. (2)
+* La condition d'arrêt est donnée par le pointeur suivant du dernier élément qui vaut NULL. (2)
+
+```c
+void affiche (Liste * liste){ 
+
+	Element *courant; 
+
+	// positionnement en début de liste
+	courant = liste->debut; 
+
+	// (2)
+	while (courant != NULL){ 
+		printf ("%p - %s\n", courant, courant->donnee); 
+		courant = courant->suivant; 
+	} 
+} 
+```
+
+Supprimer une liste entière
+---------------------------
+```c 
+void detruire (Liste * liste){ 
+  while (liste->taille > 0) 
+    supp_debut (liste); 
+} 
+```
+
+
+* déclarer une structure de données d’un élément de dictionnaires.
+
+```c 
+struct block {
+    char data[255];
+    struct block *next;
+}
+
+struct word {
+    char key[25];
+    struct block *definition
+    struct word *next
+}
+```
+
+```c
+
+typedef struct ListeRepere {
+	Element *debut; // adresse du premier élément de la liste
+	Element *fin; // adresse du dernier élément de la  liste
+	int taille; // nombre d'éléments
+} Liste;
+
+```
+
+* écrire une fonction permettant de tester si un dictionnaire est vide. La fonction retourne un nombre positif si le dictionnaire est vide sinon zéro dans le cas contraire.
+
+* écrire une fonction permettant d’ajouter un mot à la tête de liste.
+
+
+```c
+int ins_debut_liste (Liste * liste, char *donnee){ 
+
+	// déclarer nouveau élément à insérer
+	Element *nouveau_element; 
+
+	// allocation de mémoire
+	if ((nouveau_element = (Element *) malloc (sizeof (Element))) == NULL) 
+		return -1; //echec
+	if ((nouveau_element->donnee = (char *) malloc (50 * sizeof (char))) == NULL) 
+		return -1; //echec
+
+	// remmplir champs de données
+	strcpy (nouveau_element->donnee, donnee); 
+	
+	// pointeur suivant du nouvel élément pointe vers le premier élément
+	nouveau_element->suivant = liste->debut;
+
+	// pointeur debut pointe vers le nouvel élément 
+	liste->debut = nouveau_element; 
+
+	// maj taille
+	liste->taille++; 
+
+	return 0; // réussite
+}
+```
+
+* écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
+```c
+int ins_fin_liste (Liste * liste, Element * courant, char *donnee){ 
+  Element *nouveau_element; 
+  if ((nouveau_element = (Element *) malloc (sizeof (Element))) == NULL) 
+    return -1; 
+  if ((nouveau_element->donnee = (char *) malloc (50 * sizeof (char))) 
+      == NULL) 
+    return -1; 
+  strcpy (nouveau_element->donnee, donnee); 
+
+  courant->suivant = nouveau_element; 
+  nouveau_element->suivant = NULL; 
+
+  liste->fin = nouveau_element; 
+
+  liste->taille++; 
+  return 0; 
+} 
+
+
+```
+* écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
+
+```c
+int ins_liste (Liste * liste, char *donnee, int pos){ // pos = position dans la liste
+	if (liste->taille < 2) 
+		return -1; // echec
+	if (pos < 1 || pos >= liste->taille) 
+		return -1; // echec
+
+	Element *courant; 
+	Element *nouveau_element; 
+	int i; 
+
+	// allocation de mémoire
+	if ((nouveau_element = (Element *) malloc (sizeof (Element))) == NULL) 
+		return -1; // échec
+	if ((nouveau_element->donnee = (char *) malloc (50 * sizeof (char))) == NULL) 
+		return -1; // échec
+
+	// ajout dans le champs des données
+	courant = liste->debut; 
+	for (i = 1; i < pos; ++i) 
+		courant = courant->suivant; 
+	if (courant->suivant == NULL) 
+		return -1; 
+	strcpy (nouveau_element->donnee, donnee); 
+
+	// le pointeur suivant du nouvel élément pointe vers l'adresse sur laquelle pointe le pointeur suivant d'élément courant. 
+	nouveau_element->suivant = courant->suivant; 
+
+	// le pointeur suivant du l'élément courant pointe vers le nouvel élément
+	courant->suivant = nouveau_element; 
+
+	// maj de la taille
+	liste->taille++; 
+
+	return 0; // réussite
+} 
+```
+
+* écrire une fonction permettant de supprimer un mot à la tête de liste.
+
+* écrire une fonction permettant de supprimer un mot à la queue de liste.
+
+```c 
+int supp_debut (Liste * liste){ 
+    if (liste->taille == 0) 
+        return -1; 
+    Element *supp_element; 
+    supp_element = liste->debut; 
+    liste->debut = liste->debut->suivant; 
+    if (liste->taille == 1) 
+        liste->fin = NULL; 
+    free (supp_element->donnee); 
+    free (supp_element); 
+    liste->taille--; 
+    return 0; 
+} 
+```
+
+* écrire une fonction permettant de supprimer un mot en donnant son indice.
+
+```c 
+int supp_dans_liste (Liste * liste, int pos){ 
+  if (liste->taille <= 1 || pos < 1 || pos >= liste->taille) 
+    return -1; 
+  int i; 
+  Element *courant; 
+  Element *supp_element; 
+  courant = liste->debut; 
+
+  for (i = 1; i < pos; ++i) 
+    courant = courant->suivant; 
+
+  supp_element = courant->suivant; 
+  courant->suivant = courant->suivant->suivant; 
+  if(courant->suivant == NULL) 
+          liste->fin = courant; 
+  free (supp_element->donnee); 
+  free (supp_element); 
+  liste->taille--; 
+  return 0; 
+} 
+
+```
+* écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.
+
+* écrire une fonction permettant de rechercher un mot.
+
+* écrire une fonction pour copier un dictionnaire. La fonction retourne un nouveau dictionnaire.
+
+* écrire une fonction affichant tous les mots entrés par page de 10.
+
+* écrire une fonction affichant un menu pour faire appels à des fonctions
+
+* écrire une fonction permettant de trier le dictionnaire par order croissant et décroissant. en haut.
+
+* écrire un makefile qui permet de compiler ce programme.
+
+Lorsque le programme se termine, vous devez prendre soin de libérer toutes les zones de mémoires utilisés, si votre programme n’effectue pas proprement ce nettoyage, cela entraîne un point de moins sur la note attribuée à cet exercice.
+
+## Question 3
+
+En reprenant l’énoncé de l’exercice 2, refaire toutes les fonctions en utilisant une liste doublement chaînée. Une list doublement chaînée est une liste dont chaque élément maintient deux pointeurs qui pointent respectivement sur un élément précédent et un élément suivant.
+
+* déclarer une structure de données d’un élément de dictionnaires.
+
+* écrire une fonction permettant de tester si un dictionnaire est vide. La fonction retourne un nombre positif si le dictionnaire est vide sinon zéro dans le cas contraire.
+
+* écrire une fonction permettant d’ajouter un mot à la tête de liste.
+
+* écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
+
+* écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
+
+* écrire une fonction permettant de supprimer un mot à la tête de liste.
+
+* écrire une fonction permettant de supprimer un mot à la queue de liste.
+
+* écrire une fonction permettant de supprimer un mot en donnant son indice.
+
+* écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.
+
+* écrire une fonction permettant de rechercher un mot.
+
+* écrire une fonction pour copier un dictionnaire. La fonction retourne un nouveau dictionnaire.
+
+* écrire une fonction affichant tous les mots entrés par page de 10.
+
+* écrire une fonction affichant un menu pour faire appels à des fonctions
+
+* écrire une fonction permettant de trier le dictionnaire par order croissant et décroissant. en haut.
+
+* écrire un makefile qui permet de compiler ce programme.
+
+
 

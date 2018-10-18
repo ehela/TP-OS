@@ -84,12 +84,15 @@ Ensuite on lance la fonction main qui lance le programme:
 #remarque ligne 61: en fait je pense plus que le caractère doit être différent du "NULL" ou bien de "\0"
 #remarque ligne 62 : Est-ce que "stdin" signifie qu'on peut rentrer un autre caractère(/chaine de caractère) ou bien ?
 
+
 2. En utilisant le gdb, mettez en évidence le passage par référence de chaque élément
 du tableau.
 
-* dans le fichier makefile, ecrire : gcc -g programme.c -o programme
-avec , programme, le nom du programme
+* dans le fichier.c, ecrire : gcc -g programme.c -o programme
+avec , programme, le nom du programme a exécuter .S'il y a plusieurs fichiers ".c", il faut aussi les mettre
 
+*(gdb)kill 		//terminer le programme en cours
+* (gdb)run		// redémarre l'exécution en cours
 
 
 
@@ -164,7 +167,9 @@ ptr = (st??? bl??? ?) malloc(sizeof());
 
 ...c
 
-//En reprenant l’énoncé de l’exercice 2, refaire toutes les fonctions en utilisant une liste doublement chaînée. Une list doublement chaînée est une liste dont chaque élément maintient deux pointeurs qui pointent respectivement sur un élément précédent et un élément suivant.
+#define <stdio.h>
+#define <stdlib.h>
+
 
 // déclarer une structure de données d’un élément de dictionnaires.
 
@@ -175,7 +180,9 @@ struct dictionnaire
 	char definition[1000];
 };
 
-// écrire une fonction permettant de tester si un dictionnaire est vide. La fonction retourne un nombre positif si le dictionnaire est vide sinon zéro dans le cas contraire.
+// écrire une fonction permettant de tester si un dictionnaire est vide. RETURN un nombre positif IF vide, ELSE zéro 
+int if_empty(dict)
+
 
 // écrire une fonction permettant d’ajouter un mot à la tête de liste.
 
@@ -223,6 +230,65 @@ maintient deux pointeurs qui pointent respectivement sur un élément précéden
 ...c
 
 ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

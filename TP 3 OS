@@ -127,8 +127,9 @@ entraîne un point de moins sur la note attribuée à cet exercice.
 
 ...c
 
+#include <string.h> // calcul sur les chaines
 
-ce que le prof a mis au tableau: :o
+//ce que le prof a mis au tableau: :o
 
 struct block {
     char data[255];
@@ -151,9 +152,99 @@ ptr = (st??? bl??? ?) malloc(sizeof());
 
 
 
+// déclaration structure de données d'un élément de dictionnaire
+
+
+
+// Test si dict est vide. Return nb positif si vide, else, return 0
+int  test_if_dict_vide ( dict ){
+}
+
+
+//permettant d’ajouter un mot à la tête de liste
+int add_word_first (list, word){
+}
+
+
+//fonction permettant d’ajouter un mot à la queue d’une liste.
+int ... (list, word){
+}
+
+
+//permettant d’ajouter un mot en donnant l’indice d’insertion.
+int insert_word (list, insertion){
+}
+
+
+
+
+//permettant de supprimer un mot à la tête de liste.
+int del_word_first(list, word){
+}
+
+
+
+
+//permettant de supprimer un mot en donnant son indice(index).
+int del_index_word(list, index){
+}
+
+
+
+
+
+//permettant de supprimer un mot en donnant le mot à supprimer.
+int del_word(list, word){
+}
+
+
+
+
+
+//permettant de rechercher un mot.
+int find_word(list, word){
+}
+
+
+
+
+
+//pour copier un dictionnaire. La fonction retourne un nouveau
+dictionnaire.
+int copy_dict(dict ){
+}
+
+
+
+
+//fonction affichant tous les mots entrés par page de 10.
+int show_words(list){
+}
+
+
+
+// affichant un menu pour faire appels à des fonctions
+??
+
+
+
+// permettant de trier le dictionnaire par order croissant et décroissant.
+en haut.
+int sort_dict(dict, ordre){
+}
+
+
+
+
+
 ...
 
 
+//écrire un makefile qui permet de compiler ce programme.
+...c
+// MAKEFILE
+
+...
 
 
 

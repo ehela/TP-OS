@@ -30,8 +30,8 @@ int getint ( int ∗pn ) // pn est un pointeur
   if ( c == ’+ ’ | | c == ’ − ’)
     c = getchar ( ) ;
   for (∗pn = 0 ; isdigit ( c ) ; c = getchar ( ) )
-    *pn = 10 ∗ ∗pn + ( c − ’ 0 ’ ) ;
-    ∗pn ∗= si g n ;
+  *pn = 10 ∗ ∗pn + ( c − ’ 0 ’ ) ;
+  ∗pn ∗= si g n ;
   if ( c != EOF)
     ungetc ( c , stdin ) ;
   return c ;
@@ -68,7 +68,8 @@ getint()
     IF: la variable c est "+" ou "-", alors on doit rentrer un autre caractère pour la variable c: c = getchar()
     FOR: 
         initialiser pointeur *pn --> jusqu'a ce que le nombre entré soit un "digit"/nombre (= CONDITION DE SORTIE)
-	Dans la boucle, *pn = 10 * *pn + (c - '0') et ensuite, on multiplie *pn par sign ( qui vaut soit 1, soit -1)
+	
+    Dans la boucle, *pn = 10 * *pn + (c - '0') et ensuite, on multiplie *pn par sign ( qui vaut soit 1, soit -1)
 	
     IF: si la variable c n'est pas la fin du fichier, alors on fait unget(c- '0')
     
@@ -86,14 +87,17 @@ Ensuite on lance la fonction main qui lance le programme:
 2. En utilisant le gdb, mettez en évidence le passage par référence de chaque élément
 du tableau.
 
+* dans le fichier makefile, ecrire : gcc -g programme.c -o programme
+avec , programme, le nom du programme
 
 
 
 
 3. Essayez de comprendre les rapports de la commande strace
 
-
-
+Permet de tracer un appel système généré par le processus
+Remarque :> strace -o trace.txt ./<  >
+crée un fichier nommé trace.txt dans lequel sont notés tous les appels systèmes
 
 
 #Exercice 2
@@ -148,6 +152,58 @@ ptr = (st??? bl??? ?) malloc(sizeof());
     strcpy (dest, source)
     strnpy( , ,j)
     dest[5] = '/0'
+
+
+
+
+...
+
+
+
+
+
+...c
+
+//En reprenant l’énoncé de l’exercice 2, refaire toutes les fonctions en utilisant une liste doublement chaînée. Une list doublement chaînée est une liste dont chaque élément maintient deux pointeurs qui pointent respectivement sur un élément précédent et un élément suivant.
+
+// déclarer une structure de données d’un élément de dictionnaires.
+
+typedef struct dictionnaire dico;
+struct dictionnaire
+{
+	char mot[100];
+	char definition[1000];
+};
+
+// écrire une fonction permettant de tester si un dictionnaire est vide. La fonction retourne un nombre positif si le dictionnaire est vide sinon zéro dans le cas contraire.
+
+// écrire une fonction permettant d’ajouter un mot à la tête de liste.
+
+// écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
+
+// écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
+
+// écrire une fonction permettant de supprimer un mot à la tête de liste.
+
+// écrire une fonction permettant de supprimer un mot à la queue de liste.
+
+// écrire une fonction permettant de supprimer un mot en donnant son indice.
+
+// écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.
+
+// écrire une fonction permettant de rechercher un mot.
+
+// écrire une fonction pour copier un dictionnaire. La fonction retourne un nouveau dictionnaire.
+
+// écrire une fonction affichant tous les mots entrés par page de 10.
+
+// écrire une fonction affichant un menu pour faire appels à des fonctions
+
+// écrire une fonction permettant de trier le dictionnaire par order croissant et décroissant. en haut.
+
+// écrire un makefile qui permet de compiler ce programme.
+
+
 
 
 
@@ -584,55 +640,4 @@ int supp_dans_liste (Liste * liste, int pos){
 } 
 
 ```
-* écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.
-
-* écrire une fonction permettant de rechercher un mot.
-
-* écrire une fonction pour copier un dictionnaire. La fonction retourne un nouveau dictionnaire.
-
-* écrire une fonction affichant tous les mots entrés par page de 10.
-
-* écrire une fonction affichant un menu pour faire appels à des fonctions
-
-* écrire une fonction permettant de trier le dictionnaire par order croissant et décroissant. en haut.
-
-* écrire un makefile qui permet de compiler ce programme.
-
-Lorsque le programme se termine, vous devez prendre soin de libérer toutes les zones de mémoires utilisés, si votre programme n’effectue pas proprement ce nettoyage, cela entraîne un point de moins sur la note attribuée à cet exercice.
-
-## Question 3
-
-En reprenant l’énoncé de l’exercice 2, refaire toutes les fonctions en utilisant une liste doublement chaînée. Une list doublement chaînée est une liste dont chaque élément maintient deux pointeurs qui pointent respectivement sur un élément précédent et un élément suivant.
-
-* déclarer une structure de données d’un élément de dictionnaires.
-
-* écrire une fonction permettant de tester si un dictionnaire est vide. La fonction retourne un nombre positif si le dictionnaire est vide sinon zéro dans le cas contraire.
-
-* écrire une fonction permettant d’ajouter un mot à la tête de liste.
-
-* écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
-
-* écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
-
-* écrire une fonction permettant de supprimer un mot à la tête de liste.
-
-* écrire une fonction permettant de supprimer un mot à la queue de liste.
-
-* écrire une fonction permettant de supprimer un mot en donnant son indice.
-
-* écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.
-
-* écrire une fonction permettant de rechercher un mot.
-
-* écrire une fonction pour copier un dictionnaire. La fonction retourne un nouveau dictionnaire.
-
-* écrire une fonction affichant tous les mots entrés par page de 10.
-
-* écrire une fonction affichant un menu pour faire appels à des fonctions
-
-* écrire une fonction permettant de trier le dictionnaire par order croissant et décroissant. en haut.
-
-* écrire un makefile qui permet de compiler ce programme.
-
-
 

@@ -80,9 +80,9 @@ Ensuite on lance la fonction main qui lance le programme:
   On définit un tableau ayant une taille limitée, puis on initialise une boucle for ayant "n" comme variable compteur
 
 
-#remarque ligne 60: Je ne suis pas sure que ce soit obligatoirement un simple caractère, il faudrait voir si ça pourrait être une "string"
-#remarque ligne 61: en fait je pense plus que le caractère doit être différent du "NULL" ou bien de "\0"
-#remarque ligne 62 : Est-ce que "stdin" signifie qu'on peut rentrer un autre caractère(/chaine de caractère) ou bien ?
+#remarque ligne 62: Je ne suis pas sure que ce soit obligatoirement un simple caractère, il faudrait voir si ça pourrait être une "string"
+#remarque ligne 63: en fait je pense plus que le caractère doit être différent du "NULL" ou bien de "\0"
+#remarque ligne 64 : Est-ce que "stdin" signifie qu'on peut rentrer un autre caractère(/chaine de caractère) ou bien ?
 
 
 2. En utilisant le gdb, mettez en évidence le passage par référence de chaque élément
@@ -171,20 +171,44 @@ ptr = (st??? bl??? ?) malloc(sizeof());
 #define <stdlib.h>
 
 
+
+
 // déclarer une structure de données d’un élément de dictionnaires.
 
-typedef struct dictionnaire dico;
+//typedef struct dictionnaire dico; pas obligé de faire ça
 struct dictionnaire
 {
-	char mot[100];
+	char word[100];
 	char definition[1000];
 };
+
+//cette structure contient un pointeur vers le premier élément de la liste
+struct first_list
+{
+	element *first;
+};
+
+// 
+struct element
+{
+	int number;
+	element *suivant;
+};
+
+
 
 // écrire une fonction permettant de tester si un dictionnaire est vide. RETURN un nombre positif IF vide, ELSE zéro 
 int if_empty(dict)
 
 
 // écrire une fonction permettant d’ajouter un mot à la tête de liste.
+int add_head(dico *word, char* mot){
+	// mot: le mot à ajouter 
+}
+
+int add_head(dico *word, char* mot){ //doublement chainé
+
+}
 
 // écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
 

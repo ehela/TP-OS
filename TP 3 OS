@@ -36,6 +36,8 @@ int getint ( int ∗pn ) // pn est un pointeur
     ungetc ( c , stdin ) ;
   return c ;
 }
+
+
 ...
 
 Répondez aux questions suivantes :

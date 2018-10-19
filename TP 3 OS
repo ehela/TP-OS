@@ -169,17 +169,17 @@ ptr = (st??? bl??? ?) malloc(sizeof());
 
 #define <stdio.h>
 #define <stdlib.h>
-
+#define size_def 1000
 
 
 
 // déclarer une structure de données d’un élément de dictionnaires.
 
 //typedef struct dictionnaire dico; pas obligé de faire ça
-struct dictionnaire
+struct Dictionnaire
 {
-	char word[100];
-	char definition[1000];
+	char definition[size_def];
+	struct Dictionnaire *next;
 };
 
 //cette structure contient un pointeur vers le premier élément de la liste
@@ -188,21 +188,26 @@ struct first_list
 	element *first;
 };
 
-// 
-struct element
-{
-	int number;
-	element *suivant;
+struct word {
+    char key[25];
+    struct Dictionnaire *definition
+    struct word *next_word
 };
+
+
+REMARQUE: Il faudra placer ça : Dictionnaire *dictionnaire
 
 
 
 // écrire une fonction permettant de tester si un dictionnaire est vide. RETURN un nombre positif IF vide, ELSE zéro 
-int if_empty(dict)
+int if_empty(dictionnaire *poineur )
+	if *pointeur == null;
+		return 1;
+	return 0
 
 
 // écrire une fonction permettant d’ajouter un mot à la tête de liste.
-int add_head(dico *word, char* mot){
+int add_head(dictionnaire *word, char* mot){
 	// mot: le mot à ajouter 
 }
 

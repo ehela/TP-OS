@@ -179,6 +179,7 @@ ptr = (st??? bl??? ?) malloc(sizeof());
 struct Dictionnaire
 {
 	char definition[size_def];
+	char word[30]
 	struct Dictionnaire *next;
 };
 
@@ -188,34 +189,49 @@ struct first_list
 	element *first;
 };
 
-struct word {
+struct Word {
     char key[25];
     struct Dictionnaire *definition
     struct word *next_word
 };
 
 
-REMARQUE: Il faudra placer ça : Dictionnaire *dictionnaire
+List *list = null
 
-
-
-// écrire une fonction permettant de tester si un dictionnaire est vide. RETURN un nombre positif IF vide, ELSE zéro 
-int if_empty(dictionnaire *poineur )
+//OK??  écrire une fonction permettant de tester si un dictionnaire est vide. RETURN un nombre positif IF vide, ELSE zéro  
+int if_empty(dictionnaire *pointeur )
 	if *pointeur == null;
 		return 1;
 	return 0
 
 
 // écrire une fonction permettant d’ajouter un mot à la tête de liste.
-int add_head(dictionnaire *word, char* mot){
+int add_head(List *list, char* mot){
 	// mot: le mot à ajouter 
+	list *new = malloc (sizeof(*new));
+	//recopie de l'élément
+	Word dictionnaire = mot;
+	strcpy (dest, src)
+	
+	// next pointeur = pointeur du premier élément de la liste
+	// pointeur liste pointe sur next pointeur
 }
 
-int add_head(dico *word, char* mot){ //doublement chainé
+int add_head(dico *word, char* mot){ 	//doublement chainé
 
 }
 
 // écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
+int add_tail (Dict *dict,char* mot){
+	//copie mot
+	
+	
+	// boucle while qui itère: tant que pointeur != null, aller elem suivant
+
+		//copie mot dans structure 
+		//add mot 
+
+}
 
 // écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
 
@@ -735,4 +751,15 @@ int supp_dans_liste (Liste * liste, int pos){
 } 
 
 ```
+
+
+
+
+
+
+
+
+
+
+
 

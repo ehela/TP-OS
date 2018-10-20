@@ -763,3 +763,131 @@ int supp_dans_liste (Liste * liste, int pos){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// fichier.h --> Prototypes
+# define <stdio.h>
+# define <stlib.h>
+# define size_def 1000
+/* create the differents structures*/
+struct Dict
+{
+	char data[size_def];
+	struct Dict *p_Dnext;
+};
+
+struct Word
+{
+	char key[30];
+	struct Dict *p_definition;
+	struct Word *p_Wnext
+};
+
+int add_head (struct Word *p_Whead, char* mot)
+int add_tail (struct Word *p_Whead, char* mot )
+
+
+
+
+// fichier .c
+
+/*écrire une fonction permettant d’ajouter un mot à la tête de liste. 
+*p_head: pointeur de début de liste
+mot: mot à ajouter*/
+int add_head (struct Word *p_Whead, char* mot){
+	// *p_Wnext= *p_Whead
+	//p_whead --> *p_Wnext
+	// struct Word *p_Wnext = malloc(sizeof(*p_Wnext))
+
+	// Word word = mot
+
+
+}
+
+
+//OK??  écrire une fonction permettant de tester si un dictionnaire est vide. RETURN un nombre positif IF vide, ELSE zéro  
+int if_empty(struct Word *p_Whead ){
+	if p_Whead == null;
+		return 1;
+	return 0
+}
+
+
+// écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
+int add_tail (struct Word *p_Whead, char* mot ){
+	//char* p_Wnext
+
+	/* if p_Whead == NULL{
+		*p_Wnext = *p_Whead
+		*p_Whead pointe sur p_Whead
+	}*/
+
+	// p_new =p_Whead 
+
+	// while (*p_new != NULL) --> Element suivant
+
+		//
+
+	return 0;
+}	
+
+
+// écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
+int insert_word (struct Word *p_Whead, char* mot, int index){
+	// int i;
+
+	//for i = 0
+}
+
+
+
+// main.c
+
+int main (){
+	struct Word *p_Whead = NULL;
+	return 0;
+}
+
+
+
+

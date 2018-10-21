@@ -791,20 +791,6 @@ int supp_dans_liste (Liste * liste, int pos){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // fichier.h --> Prototypes
 # define <stdio.h>
 # define <stlib.h>
@@ -816,12 +802,29 @@ struct Dict
 	struct Dict *p_Dnext;
 };
 
-struct Word
+struct Woord
 {
 	char key[30];
 	struct Dict *p_definition;
 	struct Word *p_Wnext
 };
+
+
+/*OU BIEN J'EN AI MARRE JE FAIS CETTE STRUCTURE TANT PIS SI  C'EST PAS BON
+pcq avec l'uatre, y faudrait prendre en comptre que mot est différent de la déf
+Ici, pas de distinction*/
+struct Word 
+{
+	char data[size_def];
+	struct word *p_Wnext;
+	{
+		
+	};
+}
+
+
+/* TOUTES LES AUTRES STRUCTURE SONT A PARTIR DE CA*/
+
 
 int add_head (struct Word *p_Whead, char* mot)
 int add_tail (struct Word *p_Whead, char* mot )
@@ -857,6 +860,23 @@ int if_empty(struct Word *p_Whead ){
 int add_tail (struct Word *p_Whead, char* mot ){
 	//char* p_Wnext
 
+	struct Word *p_Wnew = malloc(sizeof(*p_Wnew));
+
+	if p_Wnew != NULL{ // si l'alloc a marché
+		p_Wnew = NULL;
+
+		if p_Whead == null{
+			p_Whead = p_Wnew;
+			struct word data = mot;
+		}
+		else {
+			struct 
+			{
+				
+			};
+		}
+	}
+
 	/* if p_Whead == NULL{
 		*p_Wnext = *p_Whead
 		*p_Whead pointe sur p_Whead
@@ -876,8 +896,42 @@ int add_tail (struct Word *p_Whead, char* mot ){
 int insert_word (struct Word *p_Whead, char* mot, int index){
 	// int i;
 
-	//for i = 0
+	//for i = 0, i > index, i ++{
+	//Add word
+
+
 }
+
+
+
+// écrire une fonction permettant de supprimer un mot à la tête de liste.
+int del_word (struct Word *p_Whead){
+	//if *p_Whead == NULL , alors on ne supprime rien/ OU BIEN ERROR
+		//return 0;
+}
+
+
+// écrire une fonction permettant de supprimer un mot à la queue de liste.
+
+// écrire une fonction permettant de supprimer un mot en donnant son indice.
+
+// écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.
+
+// écrire une fonction permettant de rechercher un mot.
+
+// écrire une fonction pour copier un dictionnaire. La fonction retourne un nouveau dictionnaire.
+
+// écrire une fonction affichant tous les mots entrés par page de 10.
+
+// écrire une fonction affichant un menu pour faire appels à des fonctions
+
+// écrire une fonction permettant de trier le dictionnaire par order croissant et décroissant. en haut.
+
+// écrire un makefile qui permet de compiler ce programme.
+
+
+
+
 
 
 

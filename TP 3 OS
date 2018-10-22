@@ -165,6 +165,10 @@ ptr = (st??? bl??? ?) malloc(sizeof());
 
 
 
+
+
+
+
 ...c
 
 #define <stdio.h>
@@ -173,71 +177,138 @@ ptr = (st??? bl??? ?) malloc(sizeof());
 
 
 
-// déclarer une structure de données d’un élément de dictionnaires.
 
-//typedef struct dictionnaire dico; pas obligé de faire ça
-struct Dictionnaire
+
+// fichier.h --> Prototypes
+# define <stdio.h>
+# define <stlib.h>
+# define size_def 1000
+/* create the differents structures*/
+struct Dict
 {
-	char definition[size_def];
-	char word[30]
-	struct Dictionnaire *next;
+	char data[size_def];
+	struct Dict *p_Dnext;
 };
 
-//cette structure contient un pointeur vers le premier élément de la liste
-struct first_list
+struct Woord
 {
-	element *first;
-};
-
-struct Word {
-    char key[25];
-    struct Dictionnaire *definition
-    struct word *next_word
+	char key[30];
+	struct Dict *p_definition;
+	struct Word *p_Wnext
 };
 
 
-List *list = null
+/*OU BIEN J'EN AI MARRE JE FAIS CETTE STRUCTURE TANT PIS SI  C'EST PAS BON
+pcq avec l'uatre, y faudrait prendre en comptre que mot est différent de la déf
+Ici, pas de distinction*/
+struct Word 
+{
+	char data[size_def];
+	struct word *p_Wnext;
+	{
+		
+	};
+}
+
+
+/* TOUTES LES AUTRES STRUCTURE SONT A PARTIR DE CA*/
+
+
+int add_head (struct Word *p_Whead, char* mot)
+int add_tail (struct Word *p_Whead, char* mot )
+
+
+
+
+// fichier .c
+
+/*écrire une fonction permettant d’ajouter un mot à la tête de liste. 
+*p_head: pointeur de début de liste
+mot: mot à ajouter*/
+int add_head (struct Word *p_Whead, char* mot){
+	// *p_Wnext= *p_Whead
+	//p_whead --> *p_Wnext
+	// struct Word *p_Wnext = malloc(sizeof(*p_Wnext))
+
+	// Word word = mot
+
+
+}
+
 
 //OK??  écrire une fonction permettant de tester si un dictionnaire est vide. RETURN un nombre positif IF vide, ELSE zéro  
-int if_empty(dictionnaire *pointeur )
-	if *pointeur == null;
+int if_empty(struct Word *p_Whead ){
+	if p_Whead == null;
 		return 1;
 	return 0
-
-
-// écrire une fonction permettant d’ajouter un mot à la tête de liste.
-int add_head(List *list, char* mot){
-	// mot: le mot à ajouter 
-	list *new = malloc (sizeof(*new));
-	//recopie de l'élément
-	Word dictionnaire = mot;
-	strcpy (dest, src)
-	
-	// next pointeur = pointeur du premier élément de la liste
-	// pointeur liste pointe sur next pointeur
 }
 
-int add_head(dico *word, char* mot){ 	//doublement chainé
-
-}
 
 // écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
-int add_tail (Dict *dict,char* mot){
-	//copie mot
-	
-	
-	// boucle while qui itère: tant que pointeur != null, aller elem suivant
+int add_tail (struct Word *p_Whead, char* mot ){
+	//char* p_Wnext
 
-		//copie mot dans structure 
-		//add mot 
+	struct Word *p_Wnew = malloc(sizeof(*p_Wnew));
+
+	if p_Wnew != NULL{ // si l'alloc a marché
+		p_Wnew = NULL;
+
+		if p_Whead == null{
+			p_Whead = p_Wnew;
+			struct word data = mot;
+		}
+		else {
+			struct 
+			{
+				
+			};
+		}
+	}
+
+	/* if p_Whead == NULL{
+		*p_Wnext = *p_Whead
+		*p_Whead pointe sur p_Whead
+	}*/
+
+	// p_new =p_Whead 
+
+	// while (*p_new != NULL) --> Element suivant
+
+		//
+
+	return 0;
+}	
+
+
+// écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
+int insert_word (struct Word *p_Whead, char* mot, int index){
+	// int i;
+
+	//for i = 0, i > index, i ++{
+	//Add word
+
 
 }
 
-// écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
+
 
 // écrire une fonction permettant de supprimer un mot à la tête de liste.
+int del_word (struct Word *p_Whead){
+	//if *p_Whead == NULL , alors on ne supprime rien/ OU BIEN ERROR
+		//return 0;
+}
+
 
 // écrire une fonction permettant de supprimer un mot à la queue de liste.
+
+int delete_tail (){
+	
+	while (pointeur != NULL){
+		pointeur = p_next
+		// 
+	}
+}
+
 
 // écrire une fonction permettant de supprimer un mot en donnant son indice.
 
@@ -259,46 +330,14 @@ int add_tail (Dict *dict,char* mot){
 
 
 
-...
 
 
+// main.c
 
-
-
-# Exercice 3
-
-En reprenant l’énoncé de l’exercice 2, refaire toutes les fonctions en utilisant une
-liste doublement chaînée. Une list doublement chaînée est une liste dont chaque élément
-maintient deux pointeurs qui pointent respectivement sur un élément précédent et un
-élément suivant.
-
-...c
-
-...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int main (){
+	struct Word *p_Whead = NULL;
+	return 0;
+}
 
 
 
@@ -724,7 +763,7 @@ int supp_debut (Liste * liste){
     liste->taille--; 
     return 0; 
 } 
-```
+``.
 
 * écrire une fonction permettant de supprimer un mot en donnant son indice.
 
@@ -780,177 +819,4 @@ int supp_dans_liste (Liste * liste, int pos){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-// fichier.h --> Prototypes
-# define <stdio.h>
-# define <stlib.h>
-# define size_def 1000
-/* create the differents structures*/
-struct Dict
-{
-	char data[size_def];
-	struct Dict *p_Dnext;
-};
-
-struct Woord
-{
-	char key[30];
-	struct Dict *p_definition;
-	struct Word *p_Wnext
-};
-
-
-/*OU BIEN J'EN AI MARRE JE FAIS CETTE STRUCTURE TANT PIS SI  C'EST PAS BON
-pcq avec l'uatre, y faudrait prendre en comptre que mot est différent de la déf
-Ici, pas de distinction*/
-struct Word 
-{
-	char data[size_def];
-	struct word *p_Wnext;
-	{
-		
-	};
-}
-
-
-/* TOUTES LES AUTRES STRUCTURE SONT A PARTIR DE CA*/
-
-
-int add_head (struct Word *p_Whead, char* mot)
-int add_tail (struct Word *p_Whead, char* mot )
-
-
-
-
-// fichier .c
-
-/*écrire une fonction permettant d’ajouter un mot à la tête de liste. 
-*p_head: pointeur de début de liste
-mot: mot à ajouter*/
-int add_head (struct Word *p_Whead, char* mot){
-	// *p_Wnext= *p_Whead
-	//p_whead --> *p_Wnext
-	// struct Word *p_Wnext = malloc(sizeof(*p_Wnext))
-
-	// Word word = mot
-
-
-}
-
-
-//OK??  écrire une fonction permettant de tester si un dictionnaire est vide. RETURN un nombre positif IF vide, ELSE zéro  
-int if_empty(struct Word *p_Whead ){
-	if p_Whead == null;
-		return 1;
-	return 0
-}
-
-
-// écrire une fonction permettant d’ajouter un mot à la queue d’une liste.
-int add_tail (struct Word *p_Whead, char* mot ){
-	//char* p_Wnext
-
-	struct Word *p_Wnew = malloc(sizeof(*p_Wnew));
-
-	if p_Wnew != NULL{ // si l'alloc a marché
-		p_Wnew = NULL;
-
-		if p_Whead == null{
-			p_Whead = p_Wnew;
-			struct word data = mot;
-		}
-		else {
-			struct 
-			{
-				
-			};
-		}
-	}
-
-	/* if p_Whead == NULL{
-		*p_Wnext = *p_Whead
-		*p_Whead pointe sur p_Whead
-	}*/
-
-	// p_new =p_Whead 
-
-	// while (*p_new != NULL) --> Element suivant
-
-		//
-
-	return 0;
-}	
-
-
-// écrire une fonction permettant d’ajouter un mot en donnant l’indice d’insertion.
-int insert_word (struct Word *p_Whead, char* mot, int index){
-	// int i;
-
-	//for i = 0, i > index, i ++{
-	//Add word
-
-
-}
-
-
-
-// écrire une fonction permettant de supprimer un mot à la tête de liste.
-int del_word (struct Word *p_Whead){
-	//if *p_Whead == NULL , alors on ne supprime rien/ OU BIEN ERROR
-		//return 0;
-}
-
-
-// écrire une fonction permettant de supprimer un mot à la queue de liste.
-
-int delete_tail (){
-	
-	while (pointeur != NULL){
-		pointeur = p_next
-		// 
-	}
-}
-
-
-// écrire une fonction permettant de supprimer un mot en donnant son indice.
-
-// écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.
-
-// écrire une fonction permettant de rechercher un mot.
-
-// écrire une fonction pour copier un dictionnaire. La fonction retourne un nouveau dictionnaire.
-
-// écrire une fonction affichant tous les mots entrés par page de 10.
-
-// écrire une fonction affichant un menu pour faire appels à des fonctions
-
-// écrire une fonction permettant de trier le dictionnaire par order croissant et décroissant. en haut.
-
-// écrire un makefile qui permet de compiler ce programme.
-
-
-
-
-
-
-
-// main.c
-
-int main (){
-	struct Word *p_Whead = NULL;
-	return 0;
-}
-
-
-
-
+https://hackmd.io/dYuccB7DR2q5uyO7FKZG-A?edit

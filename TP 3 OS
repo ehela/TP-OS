@@ -913,6 +913,15 @@ int del_word (struct Word *p_Whead){
 
 // écrire une fonction permettant de supprimer un mot à la queue de liste.
 
+int delete_tail (){
+	
+	while (pointeur != NULL){
+		pointeur = p_next
+		// 
+	}
+}
+
+
 // écrire une fonction permettant de supprimer un mot en donnant son indice.
 
 // écrire une fonction permettant de supprimer un mot en donnant le mot à supprimer.

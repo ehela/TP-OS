@@ -23,14 +23,26 @@ int add (table *t, int v){
 }
 
 int printList(table *t){
-  if t != NULL;
-  pointeur = t
-  while (pointeur != NULL)
-  printf("%d\n", table n)
+  if t != NULL
+  pointeur = t;
+  while (pointeur != NULL){
+    printf("%d\n", table n)
+  }
   return 0;
 }
 
 int sort (table *){
+  int valuemin = 0, value;
+  
+  while (pointeur != NULL){
+    value = table.n;
+    if (value < valuemin){
+      valuemin= value;
+    tmp = (table*) malloc(sizeof(table));
+    (*tmp).next
+    }
+  }
+  
   return0;
 }
 

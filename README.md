@@ -18,10 +18,15 @@ freeList(table *);
 
 ...c
 int add (table *t, int v){
+  
   return 0;
 }
 
 int printList(table *t){
+  if t != NULL;
+  pointeur = t
+  while (pointeur != NULL)
+  printf("%d\n", table n)
   return 0;
 }
 
@@ -33,6 +38,12 @@ int freeList(table *){
   return 0;
   
 }
+
+int main (void){
+  
+  return 0;
+}
+
 ...
 
 code blocks 

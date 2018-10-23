@@ -171,14 +171,6 @@ ptr = (st??? bl??? ?) malloc(sizeof());
 
 ...c
 
-#define <stdio.h>
-#define <stdlib.h>
-#define size_def 1000
-
-
-
-
-
 // fichier.h --> Prototypes
 # define <stdio.h>
 # define <stlib.h>

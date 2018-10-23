@@ -16,4 +16,24 @@ sort (table *)
 freeList(table *);
 
 
+...c
+int add (table *t, int v){
+  return 0;
+}
+
+int printList(table *t){
+  return 0;
+}
+
+int sort (table *){
+  return0;
+}
+
+int freeList(table *){
+  return 0;
+  
+}
+...
+
+code blocks 
 

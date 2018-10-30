@@ -9,7 +9,8 @@ Notes et autres
 
 
 <i>coucouc </i>
-
+<b>Hello</b>
+<u>HEEEllo</u>
 
 Correction
 TP 1.1

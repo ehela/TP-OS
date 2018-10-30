@@ -192,11 +192,49 @@ table de descripteur (tableau):
 0 strdin
 1 stdout
 2 strder
+3 dummy
+4
 .
 .
-.
+
+
+fd = open ("./dummy", O_CREAT);
+fd2 = dup (fd)
+
+rem : on utilise le dup pour faire la redirection
+
+pid = fork()
+
+(le fils hérite des fichiers ouverts par le père --> pere et fils peuvent communiquer !!mais attention, fichier ouverts en mm temps )
 
 
 
+### TP
 
 
+EX 1: 
+cat : afficher contenu des fichiers
+
+sol: 3-4 lignes (facile)
+
+
+Ex3 :
+je vs laisse reflechir un peu
+
+EX4:
+
+
+ex5: DUP-DUP2
+redirection:
+1) lancer resultat, stocker dans fichiers
+
+
+Déclaration de répertoire 
+
+EX6
+rem comm:
+pstree (voir relation entre diff processus system 
+par ex: diff proc créés par ...)
+utiliser fcts haut niveau
+
+CE TP A RENDRE LA SEM PROCH (9)

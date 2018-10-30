@@ -8,10 +8,6 @@ Notes et autres
 ## correction TP1
 
 
-<i>coucouc </i>
-<b>Hello</b>
-<u>HEEEllo</u>
-
 Correction
 TP 1.1
 
@@ -103,4 +99,89 @@ system exec
 
 
 strtop: split
+
+
+
+
+## TP gestion de fichiers
+
+Unix: trois types de fichiers dispo
+-Ordinaire (txt, audio, ...)
+-Répertoire (contient d'autres fichiers)
+-Spéciaux (pointe sur autre fichier-Raccourcis, liens symbolique <> liens durs(qdplus de lien, supp le fichier), pipe (comminuqer avec d'autres processus), socket (moyen de comm entre plrs processu- a travers des réseaux, autre machine), fichier matériel (entreee-sortie : stdout))
+
+Un fichier se caractérise par un "inode" (métadonné: taille, proprio, groupe, droits d'accès, date création)
+rem: qd création de fichier,  l'OS crée un lien vers inode. /!\ pas de noms de fichiers: dans le répertoire (stocke le nom des fichiers)
+
+Liens: a la cration de fichiers
+-liens dur
+-liens symbolique
+Si aucune spécification: lien dur
+ln        lien dur
+ln -s     lien symbolique
+
+...
+Ex: 
+touch foo (crée fichier "foo")
+ls -i
+ls -ia
+ls -il (lien vers le fichier)
+
+ln -s foo foo2 (make links: src leinsymbolique(foo2)vers src)
+ls -lh
+
+(et qd modif foo2 par ex)
+cat foo (affiche foo)
+(supprime foo)
+rm foo  (foo2 marche)
+
+less foo2 (ne marche plus car fait ref à foo)(affiche foo2)
+
+rm foo2 (on supprime juste le lien symbolique)
+
+(si on veut supp un fichier, il faut supp ts les liens qui pointent vers inode)
+...
+
+
+stat appel systeme
+int stat ()
+int fstat ()
+int lstat
+
+
+descripteur de ficheri (notion importante)
+table de descripteur de fichiers
+En c, plsr manieres de manip fichier (interagir avec noyau linux )- descripteur fichiers représente chq fichier
+rem= descripteur != pointeur(== wrapper)
+
+
+<i>open</i>
+emprunte le chemin (pathname, flag, mode)      
+-flag: mode avec lequel l'ouvrir
+-mode: option secondaire
+
+
+open("test", O_create | O_rdonly)   crée si n'existe pas, sinon rdonly:: lecture seule
+open("test", O_create | O_rdonly, 0711)  
+(mode) --> ici : 0 = sticky bit) A voir
+7: utilisateur
+1: groupe 
+1: mode
+remarque: permission, super_user, modif sous identitéé de super_user
+rem: _rdwr : si n'est pas créé
+
+
+EXEMPLE: 
+int fd;
+fd = open (...)   // fd >= 3 pcq stdr = 2 (y a des fichiers déjà ouverts)
+
+
+READ: 
+
+read (int fd, void *buf, size_t count);
+fd: descrieur de fichiers
+buf: contenu à copier 
+size: nbr d'octets qu'on veut lire
+
+
 

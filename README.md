@@ -188,6 +188,15 @@ DUP-DUP 2
 duplication
 
 
+table de descripteur (tableau):
+0 strdin
+1 stdout
+2 strder
+.
+.
+.
+
+
 
 
 

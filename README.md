@@ -8,7 +8,7 @@ Notes et autres
 ## correction TP1
 
 
-
+<i>coucouc </i>
 
 
 Correction
@@ -91,7 +91,7 @@ remarque: trouver chaine , analyser chaine
 -Par ex :chq option séparée par 1 seul espace (simplifier le pb)
 
 
-remarque: monshell : ne pas utiliser system
+remarque: monshell : ne pas utiliser system !!! ça comporte des failles très importantes !!
 ./monshell
 $> ls -a -l
 $> ls -al		--> ls -al -i: commande -option -option2(secondaire)

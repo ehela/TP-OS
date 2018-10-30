@@ -184,4 +184,10 @@ buf: contenu à copier
 size: nbr d'octets qu'on veut lire
 
 
+DUP-DUP 2
+duplication
+
+
+
+
 
